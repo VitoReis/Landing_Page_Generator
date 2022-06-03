@@ -3,7 +3,7 @@ Este projeto é um gerador de landing page em HTML, onde toda estilização do s
 
 ### Como utilizar:
 - Para executar o programa é importante ter em seu computador a biblioteca patoolib, ela pode ser instalada com o comando: **pip install patool**
-- Para geração do site você tera tambem de baixar o [bootstrap](https://getbootstrap.com/docs/5.1/getting-started/download/ "bootstrap") após baixar renomeie o arquivo **.rar** para **bootstrap.rar**
+- Para geração do site você tera tambem de baixar o [bootstrap](https://getbootstrap.com/docs/5.1/getting-started/download/ "bootstrap") após baixar renomeie o arquivo **.zip** para **bootstrap.zip**
 - Para a adição de imagens no seu site é importante que quando o programa fizer o seguinte pedido "**Digite o nome da imagem do seu produto**" você especifique o nome da sua imagem juntamente com a extensão dela.
 -- Exemplo do jeito certo: **foto.jpg**
 -- Exemplo do jeito errado: **foto**
