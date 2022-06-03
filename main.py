@@ -2,9 +2,11 @@ import os
 import patoolib
 
 def main():
+    os.mkdir('LandingPage')
     os.mkdir('LandingPage/img')
-    patoolib.extract_archive("bootstrap.rar", outdir="LandingPage")
-    gerate('<!DOCTYPE html>\n<html>\n<head>\n<script src="js/jquery-3.6.0.min.js" type="text/javascript"></script> \n<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>\n<script src="js/bootstrap.min.js" type="text/javascript"></script>\n<meta name="charset" content="utf-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n<style>\n.container-fluid {\npadding-right:0;\npadding-left:0;\nmargin-right:auto;\nmargin-left:auto\n}\n</style>\n')
+    patoolib.extract_archive("bootstrap.zip", outdir="LandingPage")
+    os.rename('LandingPage/bootstrap-5.1.3-dist', 'LandingPage/bootstrap')
+    gerate('<!DOCTYPE html>\n<html>\n<head>\n<script src="bootstrap/js/jquery-3.6.0.min.js" type="text/javascript"></script> \n<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>\n<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>\n<meta name="charset" content="utf-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n<style>\n.container-fluid {\npadding-right:0;\npadding-left:0;\nmargin-right:auto;\nmargin-left:auto\n}\n</style>\n')
     title = input('Insira o titulo da sua pagina: ')
     gerate(f'<title>{title}</title>\n</head>\n<body>\n')
     color = int(input('Qual destas cores você gostaria para o seu site?\n1 - Azul\n2 - Cinza\n3 - Verde\n4 - Vermelho\n'
