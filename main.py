@@ -12,6 +12,7 @@ def main():
 
     index = 1
     while index < len(list):
+        print('*'*22 + f'\nGerando o site {index}\n' + '*'*22)
         answers = list[index].split(',')
         title = answers[1]
         color = answers[2]
@@ -19,7 +20,6 @@ def main():
         columns = int(answers[4])
         productName = answers[6].split(';')
         description = answers[7].split(';')
-
 
         gerate('<!DOCTYPE html>\n<html>\n<head>\n<script src="js/jquery-3.6.0.min.js" type="text/javascript"></script> \n<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>\n<script src="js/bootstrap.min.js" type="text/javascript"></script>\n<meta name="charset" content="utf-8"/>\n<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n<style>\n.container-fluid {\npadding-right:0;\npadding-left:0;\nmargin-right:auto;\nmargin-left:auto\n}\n</style>\n', index)
         gerate(f'<title>{title}</title>\n</head>\n<body>\n', index)
@@ -65,7 +65,6 @@ def main():
 
         while rows > 0:
             col = columns
-            print(rows)
             gerate('<div class ="container-fluid row text-center">\n', index)
             while col > 0:
                 imageName = input(f'Digite o nome da imagem do seu produto {productName[i]} (ex: {productName[i]}.jpg): ')
@@ -76,6 +75,7 @@ def main():
             rows -= 1
         gerate('</div>\n</body>\n</html>', index)
         index += 1
+        print('*' * 100)
 
     print('Sua(s) landing page(s) esta(ão) pronta(s), agora coloque suas imagens dentro da pasta img.')
     print('Não se esqueça de colocar as pastas CSS e JS do bootstrap na mesma pasta da sua landing page.')

@@ -1,14 +1,12 @@
 # LandingPage-Generator
-Este projeto é um gerador de landing page em HTML, onde toda estilização do site é feita atraves do bootstrap.
+Este projeto é um gerador de landing page em HTML utilizando o google forms, onde toda estilização do site é feita através do bootstrap.
 
 ### Como utilizar:
-- Para executar o programa é importante ter em seu computador a biblioteca patoolib, ela pode ser instalada com o comando: **pip install patool**
-- Para geração do site você tera tambem de baixar o [bootstrap](https://getbootstrap.com/docs/5.1/getting-started/download/ "bootstrap") após baixar renomeie o arquivo **.zip** para **bootstrap.zip** e mova ele para a mesma pasta do programa.
-- Para a adição de imagens no seu site é importante que quando o programa fizer o seguinte pedido "**Digite o nome da imagem do seu produto**" você especifique o nome da sua imagem juntamente com a extensão dela.
-
+- Para executar você deve criar um google forms aos moldes deste [formulário](https://docs.google.com/forms/d/e/1FAIpQLSdDK61ZXKqD_vwxwDAG9cZXZOz9j7CU0IpjrZMdA-a-PYErVA/viewform).
+- Vincule as respostas deste formulário a uma planilha do google e faça o download da planilha em formato csv.
+- Em seguida renomeie o arquivo baixado para form.csv e o coloque na mesma pasta do programa.
+- Execute o programa e preencha os campos com o nomes das imagens dos produtos do seu site.
   - Exemplo do jeito certo: **foto.jpg**
-
   - Exemplo do jeito errado: **foto**
-
-Após este processo você pode mover suas imagens para dentro da pasta **img** localizada dentro da pasta **LandingPage** gerada pelo programa.
-- Após seguir todos estes passos você pode conferir sua página clicando 2 vezes no arquivo HTML dentro da pasta **LandingPage**.
+- Agora mova suas imagens para a pasta **img** dentro da pasta **LandingPage**, ambas gerada pelo programa dentro da própria pasta dele.
+- Ao finalizar baixe o [bootstrap](https://getbootstrap.com/docs/5.1/getting-started/download/ "bootstrap") e extraia as pastas CSS e JS para a pasta **LandingPage**.
