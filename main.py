@@ -1,5 +1,4 @@
 import os
-import re
 
 def main():
     if os.path.isdir('LandingPage'):
