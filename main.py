@@ -159,7 +159,7 @@ def template1(template, siteTitle, menuColor, cardColor, textColor, productName,
         i += 1
 
     generate(f'<div class="row text-center">\n<div class="col text-center border border-dark">\n<h4 '
-        f'style="color: {textColor};">Contato:</h4>\n<div>\n<a href="https://wa.me/55{whatsapp}target="_blank">\n'
+        f'style="color: {textColor};">Contato:</h4>\n<div>\n<a href="https://wa.me/55{whatsapp}" target="_blank">\n'
         f'<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-whatsapp" '
         f'viewBox="0 0 16 16" style="color: #118011; margin-bottom: 1rem;">\n<path d="M13.601 2.326A7.854 7.854 0 0 0 '
         f'7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 '
