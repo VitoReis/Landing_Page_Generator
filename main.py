@@ -1,39 +1,34 @@
 import os
-import patoolib
+from sheetsAPI import *
+from driveAPI import *
 
 
 def main():
-    if os.path.isdir('LandingPage'):
+    answers = catchAnswers()
+    if os.path.isdir('LandingPage'):        # Verifica se a pasta onde será armazenado o código já existe
         if not os.path.isdir('LandingPage/img'):
             os.mkdir('LandingPage/img')
-    else:
+    else:                                   # Se a pasta onde será armazenado o código não existe então ela será criada
         os.mkdir('LandingPage')
         os.mkdir('LandingPage/img')
 
-    compressed = os.listdir()
-    size = 0
-    while size < len(compressed):
-        if compressed[size].startswith('drive'):
-            patoolib.extract_archive(f"{compressed[size]}", outdir="LandingPage/img")
-            break;
-        size += 1
+    template = int(answers[0])                  # Salva qual template o usuário escolheu
+    siteTitle = answers[1]                      # Salva o titulo do site
+    menuColor = answers[2]                      # Salva a cor do menu
+    cardColor = answers[3]                      # Salva a cor dos cartões de produtos
+    textColor = answers[4]                      # Salva a cor dos textos
+    productName = answers[5].split('&')         # Salva o nome de cada produto
+    productPrice = answers[6].split('&')        # Salva o preço de cada produto
+    productDescription = answers[7].split('&')  # Salva a descrição de cada produto
+    whatsapp = answers[8]                       # Salva o número do whatsapp da loja
+    imagesLinks = answers[9].split(',')         # Salva o link das imagens do site
+    imagesIDs = []
+    for image in imagesLinks:                   # Separa os IDs de cada imagem dos links
+        imagesIDs.append(image.split('id=')[1])
 
-    file = open('form.csv', 'r')         # Salva o arquivo na variavel file
-    list = []
-    for row in file:
-            list.append(row)             # Salva as respostas em rows
-    answers = list[1].split(';')
+    images = catchImages(imagesIDs)
 
-    template = int(answers[1])
-    siteTitle = answers[2]
-    menuColor = answers[3]
-    cardColor = answers[4]
-    textColor = answers[5]
-    productName = answers[6].split('&')
-    productPrice = answers[7].split('&')
-    productDescription = answers[8].split('&')
-    whatsapp = answers[9]
-
+    # Ajuste de cores de acordo com a resposta
     if menuColor == 'Azul':
         menuColor = 'bg-primary'
     elif menuColor == 'Cinza':
@@ -86,43 +81,23 @@ def main():
         cardColor = 'black'
 
     if template == 1:
-        template1(template, siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp)
+        template1(siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp, images)
     elif template == 2:
-        template2(template, siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp)
+        template2(siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp, images)
 
-    print('Sua landing page esta pronta, agora coloque suas imagens dentro da pasta img.')
+    print('Sua landing page esta pronta.')
 
 def generate(code):
     file = open(f'LandingPage/landingPage.html', 'a')
     file.write(code)
 
-# def rename():
-#     images = os.listdir('LandingPage/img')
-#
-#     if len(images) > 0:
-#         i = 0
-#         for image in images:
-#             name = images[i].split(" ")[0]                                              # Encontra o nome da imagem
-#             name = name.split('.')[0]
-#             last = len(images[i].split("."))                                            # Encontra a ultima palavra da imagem
-#             extension = images[i].split(".")[last - 1]                                  # Define a ultima palavra como a extensão
-#             imageName = f'{name}.{extension}'                                           # Define o nome completo da imagem junto com a extensão
-#             os.rename(f'LandingPage/img/{images[i]}', f'LandingPage/img/{imageName}')   # Troca o nome da imagem
-#             i += 1
-
-def template1(template, siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp):
+def template1(siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, whatsapp, images):
     i = 0
     imageName = []
-    images = os.listdir('LandingPage/img')
+    # Separa a imagem de fundo das outras imagens
     while i < len(images):
         if images[i].startswith('0'):
-            name = images[i].split(" ")[0]                                              # Encontra o nome da imagem
-            name = name.split('.')[0]                                   # Garante que a imagem esteja no formato padrão
-            last = len(images[i].split("."))                                    # Encontra a ultima palavra da imagem
-            extension = images[i].split(".")[last - 1]                       # Define a ultima palavra como a extensão
-            newName = f'{name}.{extension}'                     # Define o nome completo da imagem junto com a extensão
-            os.rename(f'LandingPage/img/{images[i]}', f'LandingPage/img/{newName}')   # Troca o nome da imagem
-            backgroundImage = newName
+            backgroundImage = images[i]
         else:
             imageName.append(images[i])
         i += 1
@@ -147,8 +122,8 @@ def template1(template, siteTitle, menuColor, cardColor, textColor, productName,
 
     generate(f'<div class="container row border border-dark">\n<h1 class="col text-center" style="color: {textColor};">'
              f'{siteTitle}</h1>\n</div>\n<br/>\n')
-    i = 0
 
+    i = 0
     for product in productName:
         generate(f'<div class="container text-center">\n<ul class="list-unstyled">\n<li class="media border'
             f' border-dark {cardColor}" style="margin: auto;">\n<img class="mr-3" src="./img/{imageName[i]}"'
@@ -174,7 +149,7 @@ def template1(template, siteTitle, menuColor, cardColor, textColor, productName,
         f'058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>\n</svg>\n</a>\n</div>\n'
         f'</div>\n</div>\n</div>\n</body>\n</html>')
 
-def template2(template, siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription):
+def template2(siteTitle, menuColor, cardColor, textColor, productName, productPrice, productDescription, images):
     print('Template 2')
 
 if __name__ == '__main__':
