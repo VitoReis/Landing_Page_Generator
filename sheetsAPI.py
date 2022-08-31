@@ -12,7 +12,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # ID e alcance da planilha.
-SPREADSHEET_ID = 'SHEET ID'
+SPREADSHEET_ID = 'SHEET_ID'
 RANGE_NAME = 'Respostas ao formulário 1!B2:K3'
 
 
