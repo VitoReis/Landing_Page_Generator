@@ -28,11 +28,11 @@ def catchImages(imagesIDs):
             token.write(creds.to_json())
 
     try:
-        i = 0
         service = build('drive', 'v3', credentials=creds)
         imagesFiles = []
 
         # Para cada ID na lista: faz o download da imagem e salva o nome da imagem
+        i = 1
         for ID in imagesIDs:
             file_id = ID
 
