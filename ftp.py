@@ -27,6 +27,3 @@ def connect():
         print(ex)
     finally:
         ftps.quit()
-
-if __name__ == '__main__':
-    connect()
