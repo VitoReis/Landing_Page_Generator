@@ -128,12 +128,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-client_secrets.json
-LandingPage/img/1.jpg
-LandingPage/img/2.jpg
-LandingPage/img/3.jpg
-LandingPage/img/4.jpg
-LandingPage/img/5.jpg
-LandingPage/img/6.jpg
-LandingPage/img/7.jpg
-LandingPage/landingPage.html

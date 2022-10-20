@@ -20,7 +20,7 @@ def listener():
             result = sheet.values().get(spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME).execute()
             values = result.get('values', [])
             if COUNT != len(values):
-                COUNT += 1
+                COUNT += len(values)
                 answerCatcher()
             sleep(60)
 
