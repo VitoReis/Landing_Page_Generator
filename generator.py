@@ -1,6 +1,7 @@
 import os
 from sheets import sheets
 from drive import drive
+from ftp import connect
 from shutil import copyfile
 
 
@@ -108,6 +109,8 @@ def answerCatcher():
     # Gerando o site
     generation = generator(template, siteTitle, menuColor, cardColor, textColor, productNames, productPrices, productDescriptions, images, whatsapp)
     if generation:
+        print('Transferindo sua landing page para o servidor.')
+        connect()
         print('Sua landing page esta pronta.')
     else:
         print('Houve um erro ao gerar a landing page.')

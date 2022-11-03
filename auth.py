@@ -2,7 +2,8 @@ from __future__ import print_function
 import os
 from google.oauth2 import service_account
 
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive',
+          'https://www.googleapis.com/auth/forms']
 
 def authentication():
     if os.path.isfile('client_secrets.json'):   # Verifica a existencia e acessa o token de autenticação
